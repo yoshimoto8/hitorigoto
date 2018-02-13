@@ -1,0 +1,15 @@
+.tile {
+  height: 150px;
+  font-size: 11px;
+  margin-right: auto;
+}
+
+.title {
+  display:flex;
+  justify-content: center;
+}
+
+.body {
+  display:flex;
+  justify-content: center;
+}

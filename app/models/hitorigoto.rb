@@ -1,0 +1,2 @@
+class Hitorigoto < ApplicationRecord
+end
