@@ -3,9 +3,8 @@ import './App.css';
 import Modal from 'react-modal'
 
 import HitorigotoContainer from './components/HitorigotoContainer'
-import CreateBottonContainer from './components/CreateBottonContainer'
 import FormContainer from './components/FormContainer'
-
+import Login from './components/LoginContainer'
 
 class App extends Component {
   constructor(props) {
@@ -39,7 +38,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <CreateBottonContainer OpenCreateFrom={this.OpenCreateFrom}/>
+        <Login OpenCreateFrom={this.OpenCreateFrom}/>
         <Modal isOpen={modalIsOpen} style={customStyles}>
           <FormContainer CloseCreateFrom={this.CloseCreateFrom}/>
         </Modal>

@@ -1,15 +1,23 @@
+.App {
+  height: 100%;
+  weight: 100%;
+}
+
 .tile {
+  display: flex;
+  justify-content: center;
   height: 150px;
+  width: 600px;
   font-size: 11px;
-  margin-right: auto;
+  margin:0;
 }
 
 .title {
-  display:flex;
-  justify-content: center;
+  height: 10px;
+  width: 600px;
 }
 
 .body {
-  display:flex;
-  justify-content: center;
+  height: 100px;
+  width: 600px;
 }

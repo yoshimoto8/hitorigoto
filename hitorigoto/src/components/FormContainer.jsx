@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import {FormGroup, ControlLabel, FormControl} from 'react-bootstrap'
 
 
 
@@ -32,11 +33,18 @@ class FormContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <input type="text" value={this.state.title} onChange={ (e) => this.onChangeTitle(e) } />
-        <textarea value={this.state.text} onChange={ (e) => this.onChangeText(e) }/>
+      <form>
+        <FormGroup bsSize="small">
+          <FormControl type="text" placeholder="タイトルを入力してね♡" value={this.state.title} onChange={ (e) => this.onChangeTitle(e) } />
+        </FormGroup>
+
+        <FormGroup controlId="formControlsTextarea">
+          <ControlLabel>つぶやきフォーム</ControlLabel>
+          <FormControl componentClass="textarea" placeholder="つぶやいてね♡"  onChange={ (e) => this.onChangeText(e) }/>
+        </FormGroup>
+
         <button onClick={this.handleSubmit}> つぶやく</button>
-      </div>
+      </form>
     )
   }
 }
