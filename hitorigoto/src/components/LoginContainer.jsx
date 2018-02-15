@@ -1,6 +1,5 @@
 import React from 'react'
 import $ from 'jquery';
-import CreateBottonContainer from './CreateBottonContainer'
 
 class Login extends React.Component {
   constructor(props) {
@@ -44,9 +43,7 @@ class Login extends React.Component {
   render() {
     if(sessionStorage.getItem('user')){
       return(
-        <div>
-          <CreateBottonContainer OpenCreateFrom={this.props.OpenCreateFrom}/>
-        </div>
+        <div></div>
       )
     } else {
       return(

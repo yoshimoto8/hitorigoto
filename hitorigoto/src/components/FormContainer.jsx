@@ -13,12 +13,14 @@ class FormContainer extends React.Component {
     }
   }
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault()
+    debugger
     axios.post('http://localhost:3001//api/v1/hitorigotos',
                 {params: {title: this.state.title,
                           text: this.state.text}})
     .then((results) => {
-      this.props.CloseCreateFrom()
+      // this.props.handleAddHitorigoto(results)
     })
   }
 
@@ -33,7 +35,7 @@ class FormContainer extends React.Component {
 
   render() {
     return (
-      <form>
+      <form className="HitorigotoForm" onSubmit={e => this.handleSubmit(e)}>
         <FormGroup bsSize="small">
           <FormControl type="text" placeholder="タイトルを入力してね♡" value={this.state.title} onChange={ (e) => this.onChangeTitle(e) } />
         </FormGroup>
@@ -42,8 +44,7 @@ class FormContainer extends React.Component {
           <ControlLabel>つぶやきフォーム</ControlLabel>
           <FormControl componentClass="textarea" placeholder="つぶやいてね♡"  onChange={ (e) => this.onChangeText(e) }/>
         </FormGroup>
-
-        <button onClick={this.handleSubmit}> つぶやく</button>
+        <input type="submit"/>
       </form>
     )
   }
