@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import {FormGroup, ControlLabel, FormControl} from 'react-bootstrap'
 
 
@@ -13,15 +12,12 @@ class FormContainer extends React.Component {
     }
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    debugger
-    axios.post('http://localhost:3001//api/v1/hitorigotos',
-                {params: {title: this.state.title,
-                          text: this.state.text}})
-    .then((results) => {
-      // this.props.handleAddHitorigoto(results)
-    })
+  handleSubmit = () => {
+    const formData = [this.state.title, this.state.text]
+    this.props.CreateHitorigoto(formData)
+    this.setState({title: '',
+                    text: ''
+                  })
   }
 
 
@@ -35,17 +31,19 @@ class FormContainer extends React.Component {
 
   render() {
     return (
-      <form className="HitorigotoForm" onSubmit={e => this.handleSubmit(e)}>
-        <FormGroup bsSize="small">
-          <FormControl type="text" placeholder="タイトルを入力してね♡" value={this.state.title} onChange={ (e) => this.onChangeTitle(e) } />
-        </FormGroup>
+      <div>
+        <form className="HitorigotoForm">
+          <FormGroup bsSize="small">
+            <FormControl type="text" placeholder="タイトルを入力してね♡" value={this.state.title} onChange={ (e) => this.onChangeTitle(e) } />
+          </FormGroup>
 
-        <FormGroup controlId="formControlsTextarea">
-          <ControlLabel>つぶやきフォーム</ControlLabel>
-          <FormControl componentClass="textarea" placeholder="つぶやいてね♡"  onChange={ (e) => this.onChangeText(e) }/>
-        </FormGroup>
-        <input type="submit"/>
-      </form>
+          <FormGroup controlId="formControlsTextarea">
+            <ControlLabel>つぶやきフォーム</ControlLabel>
+            <FormControl componentClass="textarea" placeholder="つぶやいてね♡"  onChange={ (e) => this.onChangeText(e) }/>
+          </FormGroup>
+        </form>
+        <button onClick={this.handleSubmit} >つぶやく！</button>
+      </div>
     )
   }
 }

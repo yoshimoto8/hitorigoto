@@ -1,12 +1,17 @@
 module Api::V1
   class HitorigotosController < ApplicationController
     def index
-      @hitorigotos = Hitorigoto.all.order(id: "DESC")
+      @hitorigotos = Hitorigoto.all
       render json: @hitorigotos
     end
 
     def create
-      Hitorigoto.create(title: params[:params][:title], body: params[:params][:title])
+      @hitorigoto  = Hitorigoto.new(title: params[:params][:title], body: params[:params][:text])
+      if @hitorigoto.save
+        render json: @hitorigoto
+      else
+        render json: @hitorigoto.errors
+      end
     end
   end
 end

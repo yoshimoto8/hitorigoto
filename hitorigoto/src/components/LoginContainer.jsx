@@ -29,7 +29,15 @@ class Login extends React.Component {
         })
       )
       console.log('successlog')
+      this.props.ChangeModalClose()
     })
+    .catch((data)=>{
+      console.log(data)
+    })
+  }
+
+  handleModalClose = () => {
+    this.props.ChangeModalClose()
   }
 
   onChangeEmail(e) {
@@ -48,9 +56,12 @@ class Login extends React.Component {
     } else {
       return(
         <div>
-          <input type="text" value={this.state.title} onChange={ (e) => this.onChangeEmail(e) } />
-          <input value={this.state.text} onChange={ (e) => this.onChangePassword(e) }/>
-          <button onClick={this.handleLogin}>ログイン</button>
+          <div>
+            <input type="text" value={this.state.title} onChange={ (e) => this.onChangeEmail(e) } />
+            <input value={this.state.text} onChange={ (e) => this.onChangePassword(e) }/>
+            <button onClick={this.handleLogin}>ログイン</button>
+          </div>
+          <button onClick={this.handleModalClose}>閉じる</button>
         </div>
       )
     }
