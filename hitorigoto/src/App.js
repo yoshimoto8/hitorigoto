@@ -6,13 +6,20 @@ import Login from './components/LoginContainer'
 import Header from './components/HeaderContainer'
 import Modal from 'react-modal'
 
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      isLogin: false
     }
   }
+
+  ChangeIsLogout = () => {
+    this.setState({isLogin: true})
+  }
+
 
   ChangeModalOpen = () => {
     this.setState({modalIsOpen: true})
@@ -35,16 +42,17 @@ class App extends Component {
         transform             : 'translate(-50%, -50%)'
       }
     }
+
     return (
       <div className="main">
-        <Header ChangeModalOpen={this.ChangeModalOpen} ChangeModalClose={this.ChangeModalClose}/>
+        <Header ChangeIsLogout={this.ChangeIsLogout} ChangeModalOpen={this.ChangeModalOpen} ChangeModalClose={this.ChangeModalClose}/>
         <div className="App">
           <HitorigotoContainer />
           <Modal
            isOpen={this.state.modalIsOpen}
            style={customStyles}
-           onRequestClose=''>
-           <Login ChangeModalClose={this.ChangeModalClose}/>
+           onRequestClose={this.state.ChangeModalClose}>
+           <Login ChangeModalClose={this.ChangeModalClose} isLogin={this.state.isLogin}/>
           </Modal>
         </div>
       </div>

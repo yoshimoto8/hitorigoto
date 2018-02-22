@@ -15,9 +15,8 @@ class FormContainer extends React.Component {
   handleSubmit = () => {
     const formData = [this.state.title, this.state.text]
     this.props.CreateHitorigoto(formData)
-    this.setState({title: '',
-                    text: ''
-                  })
+    this.setState({title: ''})
+    this.setState({text: ''})
   }
 
 
@@ -30,21 +29,27 @@ class FormContainer extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <form className="HitorigotoForm">
-          <FormGroup bsSize="small">
-            <FormControl type="text" placeholder="タイトルを入力してね♡" value={this.state.title} onChange={ (e) => this.onChangeTitle(e) } />
-          </FormGroup>
+    if(sessionStorage.getItem('user')){
+      return(
+          <div>
+            <form className="HitorigotoForm">
+              <FormGroup bsSize="small">
+                <FormControl type="text" placeholder="タイトルを入力してね♡" value={this.state.title} onChange={ (e) => this.onChangeTitle(e) } />
+              </FormGroup>
 
-          <FormGroup controlId="formControlsTextarea">
-            <ControlLabel>つぶやきフォーム</ControlLabel>
-            <FormControl componentClass="textarea" placeholder="つぶやいてね♡"  onChange={ (e) => this.onChangeText(e) }/>
-          </FormGroup>
-        </form>
-        <button onClick={this.handleSubmit} >つぶやく！</button>
-      </div>
-    )
+              <FormGroup controlId="formControlsTextarea">
+                <ControlLabel>つぶやきフォーム</ControlLabel>
+                <FormControl componentClass="textarea" placeholder="つぶやいてね♡"  onChange={ (e) => this.onChangeText(e) }/>
+              </FormGroup>
+            </form>
+            <button onClick={this.handleSubmit} >つぶやく！</button>
+          </div>
+      )
+    }else{
+      return(
+        <div></div>
+      )
+    }
   }
 }
 

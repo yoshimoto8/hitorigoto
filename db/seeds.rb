@@ -9,18 +9,22 @@ hitorigotos = Hitorigoto.create(
   [
     {
       title: "A new cake recipe",
-      body: "Made of chocolate"
+      body: "Made of chocolate",
+      user_id: 1
     },
     {
       title: "A twitter client idea",
-      body: "Only for replying to mentions and DMs"
+      body: "Only for replying to mentions and DMs",
+      user_id: 1
     },
     {
       title: "A novel set in Italy",
-      body: "A mafia crime drama starring Berlusconi"
+      body: "A mafia crime drama starring Berlusconi",
+      user_id: 1
     },
     {
       title: "Card game design",
-      body: "Like Uno but involves drinking"
+      body: "Like Uno but involves drinking",
+      user_id: 1
     }
   ])

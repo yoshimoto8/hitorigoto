@@ -6,7 +6,7 @@ module Api::V1
     end
 
     def create
-      @hitorigoto  = Hitorigoto.new(title: params[:params][:title], body: params[:params][:text])
+      @hitorigoto  = current_user.hitorigoto.new(title: params[:params][:title], body: params[:params][:text])
       if @hitorigoto.save
         render json: @hitorigoto
       else
