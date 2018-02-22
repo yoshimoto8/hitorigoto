@@ -11,10 +11,6 @@ class User < ActiveRecord::Base
     favorites.find_by(hitorigoto_id: hitorigoto.id)
   end
 
-  def favorite!(hitorigoto)
-    favorites.create!(hitorigoto_id: hitorigoto.id)
-  end
-
   def unfavorite!(hitorigoto)
     favorites.find_by(hitorigoto_id: hitorigoto.id).destroy
   end

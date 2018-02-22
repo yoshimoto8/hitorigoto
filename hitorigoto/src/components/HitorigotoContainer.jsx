@@ -1,14 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 import $ from 'jquery';
-import {Panel} from 'react-bootstrap'
 import FormContainer from './FormContainer'
 import update from 'react-addons-update';
 
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/scale.css';
 import UserProfileContainer from './UserProfileContainer'
-
+import HitorigotoContent from './HitorigotoContent'
 import Alert from 'react-s-alert';
 
 
@@ -68,20 +67,6 @@ class HitorigotoContainer extends React.Component {
         });
     }
 
-  handleSubmitFavorite(hitorigoto_id) {
-    $.ajax({
-      type: 'POST',
-      url: 'http://localhost:3001//api/v1/favorites',
-      data: {params: {hitorigoto_id: hitorigoto_id}},
-      headers: JSON.parse(sessionStorage.getItem('user'))
-    })
-    .done((results) => {
-      console.log(results)
-    })
-  }
-
-
-
 
   render() {
     const email = this.state.data.email
@@ -94,13 +79,7 @@ class HitorigotoContainer extends React.Component {
           <FormContainer CreateHitorigoto={this.CreateHitorigoto} />
             {this.state.hitorigotos.map((data) => {
               return(
-                <div className='tile' key={data.id}>
-                  <Panel>
-                    <Panel.Heading className='title'>{data.title}</Panel.Heading>
-                    <Panel.Body className='body'>{data.body}</Panel.Body>
-                    <button onclick={this.handleSubmitFavorite(data.id)}>fav</button>
-                  </Panel>
-                </div>
+                <HitorigotoContent data={data} key={data.id}/>
               )
             })}
         </div>
