@@ -4,14 +4,9 @@ class User < ActiveRecord::Base
           :recoverable, :rememberable, :trackable, :validatable
 
   include DeviseTokenAuth::Concerns::User
-  has_many :favorite
-  has_many :favoriting_hitorigotos, through: :favorite, source: :hitorigoto
 
-  def favorite?(hitorigoto)
-    favorites.find_by(hitorigoto_id: hitorigoto.id)
-  end
+  has_many :hitorigotos, dependent: :destroy
+  has_many :favorites
+  has_many :favoriting_hitorigotos, through: :favorites, source: :hitorigoto
 
-  def unfavorite!(hitorigoto)
-    favorites.find_by(hitorigoto_id: hitorigoto.id).destroy
-  end
 end

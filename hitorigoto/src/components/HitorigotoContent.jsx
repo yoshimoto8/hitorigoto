@@ -14,7 +14,19 @@ class HitorigotoContent extends React.Component{
     $.ajax({
       type: 'POST',
       url: 'http://localhost:3001//api/v1/favorites',
-      data: {hitorigoto_id: this.state.data.id },
+      data: {hitorigoto_id: this.state.data.id},
+      headers: JSON.parse(sessionStorage.getItem('user'))
+    })
+    .done((results) => {
+      console.log(results)
+    })
+  }
+
+  handleSubmitUnFavorite = () => {
+    $.ajax({
+      type: 'DELETE',
+      url: `http://localhost:3001//api/v1/favorites/${this.state.data.id}`,
+      data: {id: this.state.data.id },
       headers: JSON.parse(sessionStorage.getItem('user'))
     })
     .done((results) => {
@@ -30,6 +42,7 @@ class HitorigotoContent extends React.Component{
           <Panel.Heading className='title'>{data.title}</Panel.Heading>
           <Panel.Body className='body'>{data.body}</Panel.Body>
           <button onClick={this.handleSubmitFavorite} >fav</button>
+          <span><button onClick={this.handleSubmitUnFavorite}>unfav</button></span>
         </Panel>
       </div>
     )
