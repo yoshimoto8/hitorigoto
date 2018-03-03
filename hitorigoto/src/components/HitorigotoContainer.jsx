@@ -21,7 +21,6 @@ class HitorigotoContainer extends React.Component {
     }
   }
 
-
   componentDidMount() {
     $.ajax({
 			type: 'GET',
@@ -43,7 +42,6 @@ class HitorigotoContainer extends React.Component {
     }
 
   CreateHitorigoto = (formData) => {
-
     $.ajax({
       type: 'POST',
       url: 'http://localhost:3001//api/v1/hitorigotos',
