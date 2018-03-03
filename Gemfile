@@ -13,6 +13,10 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.7'
 gem 'rack-cors', :require => 'rack/cors'
 
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
